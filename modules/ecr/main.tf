@@ -56,7 +56,7 @@ resource "aws_ecr_lifecycle_policy" "this" {
         rulePriority = 1
         description  = "Keep last ${each.value.image_retention_days} days of images"
         selection = {
-          tagStatus     = "untagged"
+          tagStatus     = "tagged"
           countType     = "sinceImagePushed"
           countUnit     = "days"
           countNumber   = each.value.image_retention_days
